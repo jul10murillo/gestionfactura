@@ -11,12 +11,32 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+     'gridview' => ['class' => 'kartik\grid\Module'] ,
+     'rbac'     => [
+            'class'                     => 'johnitvn\rbacplus\Module' ,
+            'userModelClassName'        => 'Edvlerblog\Adldap2\model\UserDbLdap',
+            'userModelIdField'          => 'id' ,
+            'userModelLoginField'       => 'username' ,
+            'userModelLoginFieldLabel'  => 'username' ,
+            'userModelExtraDataColumls' => null ,
+            'beforeCreateController'    => null ,
+            'beforeAction'              => null
+        ]   
+    ],
     'components' => [
+         'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                ] ,
+            ] ,
+        ] ,
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
+//            'identityClass' => 'Edvlerblog\Adldap2\model\UserDbLdap',
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
