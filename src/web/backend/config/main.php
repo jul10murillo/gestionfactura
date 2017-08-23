@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'language' => 'es',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -25,6 +26,10 @@ return [
         ]   
     ],
     'components' => [
+         'assetManager' => [
+            'class'     => 'yii\web\AssetManager',
+            'forceCopy' => true,
+        ],
          'view' => [
             'theme' => [
                 'pathMap' => [
@@ -36,10 +41,13 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-//            'identityClass' => 'Edvlerblog\Adldap2\model\UserDbLdap',
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'Edvlerblog\Adldap2\model\UserDbLdap',
+//            'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+        ],
+        'authManagerldap' => [
+            'class' => 'yii\rbac\DbManagerFrontend',
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend

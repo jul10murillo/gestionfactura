@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'language' => 'es',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
@@ -19,8 +20,15 @@ return [
                 ] ,
             ] ,
         ] ,
+        'assetManager'  => [
+            'class'     => 'yii\web\AssetManager',
+            'forceCopy' => YII_DEBUG,
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
+        ],
+         'authManager'  => [
+            'class' => 'yii\rbac\DbManagerFrontend',
         ],
         'user' => [
 //            'identityClass' => 'common\models\User',

@@ -1,0 +1,217 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Agost 21, 2017, 10:00:00 AM
+    Author     : Yusmary López
+*/
+
+/* Responsive Full Background Image Using CSS
+ * Tutorial URL: http://sixrevisions.com/css/responsive-background-image/
+*/
+
+/*---------------------------------------*/
+/*Fuentes de la aplicacion*/
+/*-------------------------------------------*/
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('font/Montserrat-Bold.otf'); /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: url('font/Montserrat-SemiBold.otf'); /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'Montserrat-Hairline';
+  src: url('font/Montserrat-Hairline.otf'); /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('font/Montserrat-Regular.otf'); /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'Montserrat-UltraLight';
+  src: url('font/Montserrat-UltraLight.otf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-family: 'Montserrat-UltraLight 2';
+  src: url('font/Montserrat-UltraLight 2.otf'); /* IE9 Compat Modes */
+}
+
+body {
+  /* Location of the image */
+   /*background-image: url('../img/img-dumit/white/BG.jpg');*/
+  /*background-image: url('../img/img-dumit/white/fondo.jpg');*/
+  
+  /* Image is centered vertically and horizontally at all times */
+  
+  /*background-position: center center;*/
+  
+  /* Image doesn't repeat */
+  /*background-repeat: no-repeat;*/
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  /*background-attachment: fixed;*/
+  
+  /* This is what makes the background image rescale based on its container's size */
+  /*background-size: cover;*/
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  /*background-color:#fcfcfc;*/
+  
+  /* SHORTHAND CSS NOTATION
+   * background: url(background-photo.jpg) center center cover no-repeat fixed;
+   */
+}
+
+/* LOGIN */
+
+.login-page{
+    background-image: url('../img/img-dumit/white/fondo_login.jpg')!important;
+  
+    background-position: center center!important;
+  
+   /* Image doesn't repeat */
+    background-repeat: no-repeat!important;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+    background-attachment: fixed!important;
+  
+   /* This is what makes the background image rescale based on its container's size */
+    background-size: cover!important;
+}
+
+.site-login{
+    margin-top: 12%;
+}
+
+.title-login{
+    color:#3e3934;
+    font-family: 'Montserrat-Bold';
+    font-size:33.62px; 
+}
+
+.title2-login{
+    color:#3e3934;
+    font-family: 'Montserrat-Regular';
+    font-size:33.62px;  
+}
+
+.login-dumit .form-control{
+    color: #3e3934;
+    font-size: 14pt;
+    width: 50%;
+}
+
+.login-img{
+    padding-top: 15%;
+    padding-left: 40%;
+}
+
+.login-box-msg{
+    text-align: left!important;
+}
+
+
+.btn-primary{
+    color: #fff!important;
+    font-family: 'Montserrat-SemiBold'!important;
+    font-size: 14px!important;
+    background-color: #8db559!important;
+    border-style: none!important;
+    border-radius: 4px!important;
+    margin: 10px!important;
+    width: 100px;
+    padding: 10px 16px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-control-feedback {
+    right: 50%;
+}
+
+/* HEADER */
+.skin-blue .main-header .logo {
+    background-color: #fcfcfc!important;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+    /*align-content:center;*/
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #fcfcfc!important;
+}
+
+.skin-blue .main-header .navbar .nav>li>a {
+    color: #374850!important; 
+}
+
+.skin-blue .main-header .navbar .nav>li>a:hover
+{
+    color: #8db559!important; 
+}
+
+.skin-blue .main-header li.user-header {
+    background-color: #8db559!important;
+}
+
+/* BOTON SIDEBAR-TOGGLE */
+.skin-blue .main-header .navbar .sidebar-toggle {
+    color: #8db559!important;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background: rgba(0,0,0,0.1)!important;
+}
+
+/* MENÚ*/
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #dfe2e5!important;
+}
+
+.skin-blue .sidebar a {
+    color: #222222!important;
+    font-family: 'Montserrat-UltraLight';
+    font-size: 15pt;
+}
+
+.skin-blue .sidebar a:hover{
+    background: #fcfcfc!important;
+}
+
+.skin-blue .sidebar-menu>li.header {
+    color: #4b646f;
+    background: #fcfcfc!important;
+}
+
+.skin-blue .user-panel>.info, .skin-blue .user-panel>.info>a {
+    color: #222222!important;
+}
+
+.user-panel>.image>img {
+    z-index: 5;
+    height: 90px;
+    width: 90px;
+    border: 3px solid;
+    border-color: transparent;
+    border-color: rgba(255,255,255,0.2);
+}
+
+/* FOOTER*/
+
+.main-footer {
+    background: #fcfcfc!important;
+    color: #222222!important;
+    border-top: 1px solid #d2d6de;
+    text-align: center;
+}

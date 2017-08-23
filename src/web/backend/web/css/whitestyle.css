@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Agost 21, 2017, 10:00:00 AM
+    Author     : Yusmary López
+*/
+
+/* Responsive Full Background Image Using CSS
+ * Tutorial URL: http://sixrevisions.com/css/responsive-background-image/
+*/
+body {
+  /* Location of the image */
+   /*background-image: url('../img/img-dumit/white/BG.jpg');*/
+  /*background-image: url('../img/img-dumit/white/fondo.jpg');*/
+  
+  /* Image is centered vertically and horizontally at all times */
+  /*background-position: center center;*/
+  
+  /* Image doesn't repeat */
+  /*background-repeat: no-repeat;*/
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  /*background-attachment: fixed;*/
+  
+  /* This is what makes the background image rescale based on its container's size */
+  /*background-size: cover;*/
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+/*  background-color:#fcfcfc;*/
+  
+  /* SHORTHAND CSS NOTATION
+   * background: url(background-photo.jpg) center center cover no-repeat fixed;
+   */
+}
+
+/* LOGIN */
+
+.login-page{
+  background-image: url('../img/img-dumit/white/fondo.jpg')!important;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.site-login{
+  margin-top: 50%;
+}
+
+.title-login{
+  color:#3e3934;
+  font-family: 'Montserrat-Bold';
+  font-size:33.62px; 
+}
+
+.title2-login{
+  color:#3e3934;
+  font-family: 'Montserrat-Regular';
+  font-size:33.62px;  
+}
+
+.login-dumit .form-control{
+  color: #3e3934;
+  font-size: 14pt;
+  width: 220px;
+}
+
+.login-img{
+  padding-top: 35%;
+}
+
