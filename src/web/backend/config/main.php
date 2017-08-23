@@ -9,6 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
+    'language' => 'es',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
@@ -25,19 +26,13 @@ return [
         ]   
     ],
     'components' => [
-         'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
-                ] ,
-            ] ,
-        ] ,
+
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-//            'identityClass' => 'Edvlerblog\Adldap2\model\UserDbLdap',
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'Edvlerblog\Adldap2\model\UserDbLdap',
+//            'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],

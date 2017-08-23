@@ -1,80 +1,166 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $content string */
+/**
+ * @var string $content
+ * @var \yii\web\View $this
+ * @author Julio Murillo
+ */
+use yii\helpers\Html ;
+use yii\helpers\Url ;
 
-use backend\assets\AppAsset;
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use common\widgets\Alert;
-
-AppAsset::register($this);
+$bundle = yiister\gentelella\assets\Asset::register($this) ;
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage() ; ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-<?php $this->beginBody() ?>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="<?= Yii::$app->charset ?>" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<?= Html::csrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?= $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/img/ico/logo_home_2HU_icon.ico')]); ?>
+        <?php $this->head() ?>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="nav-<?= !empty($_COOKIE['menuIsCollapsed']) && $_COOKIE['menuIsCollapsed'] == 'true' ? 'sm' : 'md' ?>" >
+<?php $this->beginBody() ; ?>
+        <?php if (!Yii::$app->user->isGuest): ?>  
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+        <div class="container body">
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+            <div class="main_container">
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+                <div class="col-md-3 left_col">
+                    <div class="left_col scroll-view">
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a href=<?= Url::to(['/rbac/permission']) ?> class="site_title"><i><?= Html::img('@web/img/LOGO_SOLO.png') ?></i><span><?= Html::img('@web/img/LOGO_HOME.png') ?></span></a>
+                        </div>
+                        <div class="clearfix"></div>
 
-<?php $this->endBody() ?>
-</body>
+                        <!-- menu prile quick info -->
+<!--                        <div class="profile">
+                            <div class="profile_pic">
+                                <img src="http://placehold.it/128x128" alt="..." class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <span>Welcome,</span>
+                                <h2>John Doe</h2>
+                            </div>
+                        </div>-->
+                        <!-- /menu prile quick info -->
+
+                        <br />
+
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+                            <div class="menu_section">
+                                <h3>General</h3>
+                                <?=
+                                \yiister\gentelella\widgets\Menu::widget(
+                                        [
+                                            "items" => [
+                                                ["label" => "Permisos", "url" => Url::to(['/rbac/permission']), "icon" => "fa fa-address-card","active" => $this->context->route == 'rbac/permission/index' ],
+                                                ["label" => "Roles", "url" => Url::to(['/rbac/role']), "icon" => "fa fa-id-card-o","active" => $this->context->route == 'rbac/role/index' ],
+                                                ["label" => "Usuarios", "url" => Url::to(['/rbac/assignment']), "icon" => "fa fa-user-circle-o","active" => $this->context->route == 'rbac/assignment/index' ],
+                                            ],
+                                        ]
+                                )
+                                ?>
+                            </div>
+
+                        </div>
+                        <!-- /sidebar menu -->
+                    </div>
+                </div>
+
+                <!-- top navigation -->
+                <div class="top_nav">
+
+                    <div class="nav_menu">
+                        <nav class="" role="navigation">
+                            <div class="nav toggle">
+                                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                            </div>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="http://placehold.it/128x128" alt=""><?= \Yii::$app->user->identity->username;?>
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        
+                                        <li><a href=<?= Url::to(['/site/logout'])?>><i class="fa fa-sign-out pull-right"></i> Salir</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                
+
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+                <!-- /top navigation -->
+
+                <!-- page content -->
+                <div class="right_col" role="main">
+<?php if (isset($this->params['h1'])): ?>
+                        <div class="page-title">
+                            <div class="title_left">
+                                <h1><?= $this->params['h1'] ?></h1>
+                            </div>
+                            <div class="title_right">
+                                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search for...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">Go!</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<?php endif ; ?>
+                    <div class="clearfix"></div>
+
+<?= $content ?>
+                </div>
+                <!-- /page content -->
+                <!-- footer content -->
+                <footer>
+                    <div class="pull-right">
+                        Backend de Gestion de Facturas<br />
+                        Grupo Dumit 
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+            </div>
+
+        </div>
+
+        <div id="custom_notifications" class="custom-notifications dsp_none">
+            <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
+            </ul>
+            <div class="clearfix"></div>
+            <div id="notif-group" class="tabbed_notifications"></div>
+        </div>
+        <!-- /footer content -->
+        <?php endif ; ?>
+        <?php if (Yii::$app->user->isGuest): ?>
+            <?= $content ?>
+        <?php endif ; ?>
+<?php $this->endBody() ; ?>
+    </body>
 </html>
-<?php $this->endPage() ?>
+<?php $this->endPage() ; ?>

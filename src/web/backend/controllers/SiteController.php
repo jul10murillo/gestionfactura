@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -32,12 +33,6 @@ class SiteController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
         ];
     }
 
@@ -60,6 +55,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->redirect(Url::to(['/rbac/permission']));
         return $this->render('index');
     }
 
