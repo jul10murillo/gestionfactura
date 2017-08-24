@@ -12,6 +12,11 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute' => 'site/login',
+    'modules' => [
+        'maintenance' => [
+            'class' => 'app\maintenance\Module',
+        ],
+    ],
     'components' => [
         'view' => [
             'theme' => [

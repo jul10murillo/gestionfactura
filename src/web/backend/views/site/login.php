@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title ;
         <div id="login" class="animate form">
             <section class="login_content">
                 <?php $form = ActiveForm::begin(['id' => 'login-form']) ; ?>
-                <h1>Backend Gestión de Facturas</h1>
+                <h1>Backend Gestión de Facturas y Pagos</h1>
                 <div class="col-lg-2 col-lg-offset-5 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
                     <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
                 

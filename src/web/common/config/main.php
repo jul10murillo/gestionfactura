@@ -1,6 +1,18 @@
 <?php
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+    'modules'             => [
+        'rbac'     => [
+            'class'                     => 'johnitvn\rbacplus\Module' ,
+            'userModelClassName'        => 'Edvlerblog\Adldap2\model\UserDbLdap',
+            'userModelIdField'          => 'id' ,
+            'userModelLoginField'       => 'username' ,
+            'userModelLoginFieldLabel'  => 'username' ,
+            'userModelExtraDataColumls' => null ,
+            'beforeCreateController'    => null ,
+            'beforeAction'              => null
+        ]
+    ] ,
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

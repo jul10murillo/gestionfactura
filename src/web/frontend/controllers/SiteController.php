@@ -73,6 +73,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+//        exit;
+        
         return $this->render('index');
     }
 
@@ -116,6 +118,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+        $this->redirect(\yii\helpers\Url::to(['maintenance/marca/index']));
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
