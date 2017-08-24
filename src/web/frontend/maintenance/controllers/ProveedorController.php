@@ -4,6 +4,8 @@ namespace app\maintenance\controllers;
 
 use yii\web\Controller;
 use app\models\ProveedorQuery;
+use app\models\Proveedor;
+use app\models\ProveedorSearch;
 
 /**
  * Default controller for the `maintenance` module
@@ -17,7 +19,25 @@ class ProveedorController extends Controller
      */
     public function actionIndex()
     {
-        $proveedorSearch = new ProveedorQuery();
-        return $this->render('index');
+        $model        = new Proveedor ;
+        $searchModel  = new ProveedorSearch() ;
+        $dataProvider = $searchModel->search(Yii::$app->request->get()) ;
+        
+        if (Yii::$app->request->isPost) {
+            
+            $model->load(Yii::$app->request->post());
+            if ($model->validate()) {
+                $model->save();
+                Yii::$app->session->setFlash('success', "Proveedor Guardado");
+            }else{
+                Yii::$app->session->setFlash('error', "Proveedor no Guardado");
+            }
+        }
+
+        return $this->render('index', [
+                    'dataProvider' => $dataProvider,
+                    'searchModel'  => $searchModel,
+                    'model'  => $model,
+        ]) ;
     }
 }
