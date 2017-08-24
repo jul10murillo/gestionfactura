@@ -208,10 +208,30 @@ body {
 }
 
 /* FOOTER*/
-
 .main-footer {
     background: #fcfcfc!important;
     color: #222222!important;
     border-top: 1px solid #d2d6de;
     text-align: center;
 }
+
+/* SECCIÓN FACTURA*/
+.btnfactura {
+    width: 60px;
+    height: 60px;
+}
+
+.btn-factura.glyphicon-plus {
+    color: #FFF!important;
+    font-size: 20px;
+}
+
+.btn.btn-success.btn-factura {
+    background-color: #1779ba;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: .3s;
+}
+
