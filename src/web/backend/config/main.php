@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'language' => 'es',
     'basePath' => dirname(__DIR__),
     'language' => 'es',
     'controllerNamespace' => 'backend\controllers',
@@ -26,7 +27,21 @@ return [
         ]   
     ],
     'components' => [
+<<<<<<< HEAD
 
+=======
+         'assetManager' => [
+            'class'     => 'yii\web\AssetManager',
+            'forceCopy' => true,
+        ],
+         'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                ] ,
+            ] ,
+        ] ,
+>>>>>>> 44038a42e9453bf371df5f9098adfbd18a24dc68
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
@@ -35,6 +50,9 @@ return [
 //            'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+        ],
+        'authManagerldap' => [
+            'class' => 'yii\rbac\DbManagerFrontend',
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
