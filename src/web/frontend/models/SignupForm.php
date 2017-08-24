@@ -6,6 +6,7 @@ use common\models\User;
 
 /**
  * Signup form
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class SignupForm extends Model
 {

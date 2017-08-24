@@ -6,6 +6,9 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
+/**
+ * @author Julio Murillo <jmurillo@grudu.org>
+ */
 class FacturaSearch extends Factura
 {
     public function rules()

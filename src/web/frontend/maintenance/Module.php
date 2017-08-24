@@ -4,6 +4,7 @@ namespace app\maintenance;
 
 /**
  * maintenance module definition class
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class Module extends \yii\base\Module
 {

@@ -36,6 +36,7 @@ use Yii;
  * @property TipoProducto $idTipoProducto
  * @property EstatusFactura $idEstatus
  * @property User $idUsuario
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class Factura extends \yii\db\ActiveRecord
 {

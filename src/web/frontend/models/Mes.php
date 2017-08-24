@@ -12,6 +12,7 @@ use Yii;
  * @property string $descripcion
  *
  * @property Factura[] $facturas
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class Mes extends \yii\db\ActiveRecord
 {

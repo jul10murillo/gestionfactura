@@ -7,6 +7,7 @@ use common\models\User;
 
 /**
  * Password reset form
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class ResetPasswordForm extends Model
 {

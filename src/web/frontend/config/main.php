@@ -34,7 +34,7 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
          'authManager'  => [
-            'class' => 'yii\rbac\DbManagerFrontend',
+            'class' => 'yii\rbac\DbManager',
         ],
         'user' => [
 //            'identityClass' => 'common\models\User',

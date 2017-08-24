@@ -11,6 +11,7 @@ use Yii;
  * @property string $descripcion
  *
  * @property Factura[] $facturas
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class Marca extends \yii\db\ActiveRecord
 {
@@ -29,6 +30,7 @@ class Marca extends \yii\db\ActiveRecord
     {
         return [
             [['descripcion'], 'required'],
+            [['descripcion'], 'unique'],
             [['descripcion'], 'string', 'max' => 100],
         ];
     }

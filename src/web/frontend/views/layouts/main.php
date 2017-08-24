@@ -65,6 +65,11 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+        <?php
+            foreach(Yii::$app->session->getFlashes() as $key => $message) {
+                echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
+            }
+        ?>
         <?= $content ?>
     </div>
 </div>

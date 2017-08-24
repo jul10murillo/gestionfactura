@@ -3,7 +3,7 @@
 /**
  * @var string $content
  * @var \yii\web\View $this
- * @author Julio Murillo
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 use yii\helpers\Html ;
 use yii\helpers\Url ;

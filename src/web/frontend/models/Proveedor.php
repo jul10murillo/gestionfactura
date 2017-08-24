@@ -13,6 +13,7 @@ use Yii;
  * @property Factura[] $facturas
  * @property ProductoProveedor[] $productoProveedors
  * @property TipoProducto[] $idTipoProductos
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class Proveedor extends \yii\db\ActiveRecord
 {

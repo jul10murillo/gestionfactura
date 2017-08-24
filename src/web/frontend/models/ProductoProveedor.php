@@ -12,6 +12,7 @@ use Yii;
  *
  * @property Proveedor $idProveedor
  * @property TipoProducto $idTipoProducto
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class ProductoProveedor extends \yii\db\ActiveRecord
 {

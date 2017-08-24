@@ -10,6 +10,7 @@ use yii\helpers\Url;
 
 /**
  * Site controller
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class SiteController extends Controller
 {

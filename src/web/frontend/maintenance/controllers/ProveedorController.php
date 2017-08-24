@@ -7,7 +7,7 @@ use app\models\ProveedorQuery;
 
 /**
  * Default controller for the `maintenance` module
- * @author Julio Murillo
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class ProveedorController extends Controller
 {

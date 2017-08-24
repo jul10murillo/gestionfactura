@@ -16,6 +16,7 @@ use Yii;
  *
  * @property Factura $idFactura
  * @property Pago[] $pagos
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class CondicionPago extends \yii\db\ActiveRecord
 {

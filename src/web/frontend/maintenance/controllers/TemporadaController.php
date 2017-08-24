@@ -6,7 +6,7 @@ use yii\web\Controller;
 
 /**
  * Default controller for the `maintenance` module
- * @author Julio Murillo
+ * @author Julio Murillo <jmurillo@grudu.org>
  */
 class TemporadaController extends Controller
 {
