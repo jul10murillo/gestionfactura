@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2017 a las 17:28:29
+-- Tiempo de generación: 25-08-2017 a las 22:54:31
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -101,6 +101,15 @@ CREATE TABLE `estatus_factura` (
   `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `estatus_factura`
+--
+
+INSERT INTO `estatus_factura` (`id_estatus`, `cod_estatus`, `descripcion`) VALUES
+(1, 'P', 'Pendiente'),
+(2, 'PC', 'Parcialmente Cancelada'),
+(3, 'C', 'Cancelada');
+
 -- --------------------------------------------------------
 
 --
@@ -130,6 +139,14 @@ CREATE TABLE `factura` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`id_factura`, `id_marca`, `id_temporada`, `id_mes`, `ano`, `id_proveedor`, `id_tipo_producto`, `nro_factura`, `monto_factura_inicial`, `unidades_factura_inicial`, `monto_factura_final`, `unidades_factura_final`, `fecha_produccion`, `fecha_despacho`, `fecha_llegada`, `fecha_almacen`, `fecha_factura_inicial`, `fecha_factura_final`, `id_estatus`, `id_usuario`) VALUES
+(1, 2, 1, 7, 2017, 1, 1, 'PHX1214T093-2July', '4854.96', 1152, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-24', '0000-00-00', 1, 231),
+(2, 1, 2, 8, 2018, 2, 2, 'PHX1214T059-2JULY', '5132.16', 972, '5464.80', 1035, NULL, NULL, NULL, NULL, '2017-08-25', '0000-00-00', 3, 231);
+
 -- --------------------------------------------------------
 
 --
@@ -140,6 +157,16 @@ CREATE TABLE `marca` (
   `id_marca` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `marca`
+--
+
+INSERT INTO `marca` (`id_marca`, `descripcion`) VALUES
+(1, 'Aishop'),
+(2, 'Exotik'),
+(3, 'Shushop'),
+(4, 'Vestimenta');
 
 -- --------------------------------------------------------
 
@@ -152,6 +179,24 @@ CREATE TABLE `mes` (
   `cod_mes` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `descripcion` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `mes`
+--
+
+INSERT INTO `mes` (`id_mes`, `cod_mes`, `descripcion`) VALUES
+(1, '1', 'Enero'),
+(2, '2', 'Febrero'),
+(3, '3', 'Marzo'),
+(4, '4', 'Abril'),
+(5, '5', 'Mayo'),
+(6, '6', 'Junio'),
+(7, '7', 'Julio'),
+(8, '8', 'Agosto'),
+(9, '9', 'Septiembre'),
+(10, '10', 'Octubre'),
+(11, '11', 'Noviembre'),
+(12, '12', 'Diciembre');
 
 -- --------------------------------------------------------
 
@@ -198,6 +243,40 @@ CREATE TABLE `producto_proveedor` (
   `id_tipo_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `producto_proveedor`
+--
+
+INSERT INTO `producto_proveedor` (`id_proveedor`, `id_tipo_producto`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(21, 1),
+(22, 4),
+(23, 4),
+(24, 2),
+(25, 2),
+(26, 2),
+(27, 3),
+(28, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -208,6 +287,40 @@ CREATE TABLE `proveedor` (
   `id_proveedor` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`id_proveedor`, `nombre`) VALUES
+(1, 'BAINI'),
+(2, 'ZTM '),
+(3, 'ELF'),
+(4, 'HONGX'),
+(5, 'WH'),
+(6, 'HY'),
+(7, 'HF'),
+(8, 'MANNI'),
+(9, 'TR'),
+(10, 'ECKO'),
+(11, 'MR HU'),
+(12, 'MR HUANG'),
+(13, 'MR ZHANG'),
+(14, 'MS OUYANG'),
+(15, 'SHADOW'),
+(16, 'PT'),
+(17, 'SD'),
+(18, 'YY'),
+(19, 'BDA'),
+(20, 'DRXD'),
+(21, 'YF'),
+(22, 'YS'),
+(23, 'MJ'),
+(24, 'YES'),
+(25, 'KITTY'),
+(26, 'CRYSTAL'),
+(27, 'TAO TAO'),
+(28, 'ZE FENG');
 
 -- --------------------------------------------------------
 
@@ -220,6 +333,14 @@ CREATE TABLE `temporada` (
   `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `temporada`
+--
+
+INSERT INTO `temporada` (`id_temporada`, `descripcion`) VALUES
+(1, 'Fall'),
+(2, 'Winter');
+
 -- --------------------------------------------------------
 
 --
@@ -230,6 +351,17 @@ CREATE TABLE `tipo_producto` (
   `id_tipo_producto` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_producto`
+--
+
+INSERT INTO `tipo_producto` (`id_tipo_producto`, `descripcion`) VALUES
+(1, 'Textil'),
+(2, 'Calzado'),
+(3, 'Bisutería'),
+(4, 'Accesorios'),
+(5, 'Artículos varios');
 
 -- --------------------------------------------------------
 
@@ -254,7 +386,8 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `status`, `created_at`, `updat
 (231, 'ylopez', 'SbGMbvl5OUhwyFaklbtmmyRajcsN9uW2', 1, 1503082969, 1503082969),
 (232, 'jmurillo', 'RoKgHmK1e-JOa-CFkdxAuwoKVVwDfmHl', 1, 1503083023, 1503083023),
 (233, 'hmoreno', 'IoSopOHHF8q3e3Uovw6YFUW_mmNmvPml', 1, 1503085902, 1503085902),
-(234, 'imarquez', 'vl72aC6lXHQ2d-SvWLYk0KVSvk0jfDAF', 1, 1503090231, 1503090231);
+(234, 'imarquez', 'vl72aC6lXHQ2d-SvWLYk0KVSvk0jfDAF', 1, 1503090231, 1503090231),
+(235, 'eperalta', 'gJ1VqyLt9qXq8syOpAiVAXs17oDyNN-5', 1, 1503339790, 1503339790);
 
 --
 -- Índices para tablas volcadas
@@ -386,22 +519,22 @@ ALTER TABLE `condicion_pago`
 -- AUTO_INCREMENT de la tabla `estatus_factura`
 --
 ALTER TABLE `estatus_factura`
-  MODIFY `id_estatus` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `mes`
 --
 ALTER TABLE `mes`
-  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `pago`
 --
@@ -411,22 +544,22 @@ ALTER TABLE `pago`
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `temporada`
 --
 ALTER TABLE `temporada`
-  MODIFY `id_temporada` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_temporada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tipo_producto`
 --
 ALTER TABLE `tipo_producto`
-  MODIFY `id_tipo_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
 --
 -- Restricciones para tablas volcadas
 --

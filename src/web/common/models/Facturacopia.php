@@ -53,8 +53,7 @@ class Factura extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-//            [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'nro_factura', 'monto_factura_inicial', 'unidades_factura_inicial', 'fecha_factura_inicial', 'fecha_factura_final', 'id_estatus', 'id_usuario'], 'required'],
-            [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'nro_factura', 'monto_factura_inicial', 'unidades_factura_inicial', 'fecha_factura_inicial', 'id_estatus', 'id_usuario'], 'required'],
+            [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'nro_factura', 'monto_factura_inicial', 'unidades_factura_inicial', 'fecha_factura_inicial', 'fecha_factura_final', 'id_estatus', 'id_usuario'], 'required'],
             [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'unidades_factura_inicial', 'unidades_factura_final', 'id_estatus', 'id_usuario'], 'integer'],
             [['monto_factura_inicial', 'monto_factura_final'], 'number'],
             [['fecha_produccion', 'fecha_despacho', 'fecha_llegada', 'fecha_almacen', 'fecha_factura_inicial', 'fecha_factura_final'], 'safe'],
@@ -82,7 +81,7 @@ class Factura extends \yii\db\ActiveRecord
             'ano' => 'Año',
             'id_proveedor' => 'Proveedor',
             'id_tipo_producto' => 'Tipo Producto',
-            'nro_factura' => 'Factura',
+            'nro_factura' => 'Nro Factura',
             'monto_factura_inicial' => 'Monto Inicial',
             'unidades_factura_inicial' => 'Unidades Inicial',
             'monto_factura_final' => 'Monto Final',
@@ -93,7 +92,7 @@ class Factura extends \yii\db\ActiveRecord
             'fecha_almacen' => 'Fecha Almacen',
             'fecha_factura_inicial' => 'Fecha Factura Inicial',
             'fecha_factura_final' => 'Fecha Factura Final',
-            'id_estatus' => 'Id Estatus',
+            'id_estatus' => 'Estatus',
             'id_usuario' => 'Id Usuario',
         ];
     }

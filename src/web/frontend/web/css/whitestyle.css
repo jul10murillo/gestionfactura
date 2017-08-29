@@ -198,6 +198,9 @@ body {
     color: #222222!important;
 }
 
+.skin-blue .sidebar-menu>li.active>a {
+    color: #fff!important;
+}
 .user-panel>.image>img {
     z-index: 5;
     height: 90px;
@@ -205,6 +208,23 @@ body {
     border: 3px solid;
     border-color: transparent;
     border-color: rgba(255,255,255,0.2);
+}
+
+/* CONTENT*/
+.content-wrapper{
+    background-image: url('../img/img-dumit/white/fondo.jpg');
+    
+    background-position: center;
+  
+   /* Image doesn't repeat */
+    background-repeat: no-repeat!important;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+    background-attachment: fixed;
+  
+   /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
 }
 
 /* FOOTER*/
@@ -217,8 +237,8 @@ body {
 
 /* SECCIÓN FACTURA*/
 .btnfactura {
-    width: 60px;
-    height: 60px;
+/*    width: 100px;
+    height: 70px;*/
 }
 
 .btn-factura.glyphicon-plus {
@@ -235,3 +255,63 @@ body {
     transition: .3s;
 }
 
+thead,thead a,thead a:hover  {
+    background-color: #9e9e9e;
+    color:#fff!important;
+    font-weight:normal;
+}
+
+.table-striped > tbody > tr{
+    background-color: #dfe2e5;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+
+.table-bordered>thead>tr>th, .table-bordered>thead>tr>td {
+    border-bottom-width: 1px!important;
+}
+
+.content-header>.breadcrumb {
+    font-size: 14pt!important;
+}
+
+span.glyphicon.glyphicon-eye-open,span.glyphicon.glyphicon-pencil{
+    color:#1779ba;
+}
+
+a.collapse-toggle:hover,a.collapse-toggle:focus{
+    color:#1779ba;
+}
+
+/*SECCIÓN REGISTRO FACTURA*/
+
+.modal-content {
+    padding: 50px;
+}
+
+.modal-title {
+    font-size: 20pt;
+}
+.division-header {
+    padding: 0px;
+    border-bottom: 2px solid;
+    border-bottom-color: #8db559;
+}
+
+input.form-control{
+    /*width: 50%;*/
+}
+
+.header-registrofac{
+    text-align: left;
+}
+
+span.glyphicon.glyphicon-list-alt,h1.modal-title{
+    display: inline-block;
+}
+
+span.glyphicon.glyphicon-list-alt{
+    font-size: 13pt;
+}

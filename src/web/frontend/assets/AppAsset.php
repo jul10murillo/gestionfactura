@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/jasny-bootstrap/js/jasny-bootstrap.js',
+        'js/ajax-modal-popup.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
