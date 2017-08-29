@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-08-2017 a las 22:54:31
+-- Tiempo de generación: 29-08-2017 a las 22:28:43
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -145,7 +145,10 @@ CREATE TABLE `factura` (
 
 INSERT INTO `factura` (`id_factura`, `id_marca`, `id_temporada`, `id_mes`, `ano`, `id_proveedor`, `id_tipo_producto`, `nro_factura`, `monto_factura_inicial`, `unidades_factura_inicial`, `monto_factura_final`, `unidades_factura_final`, `fecha_produccion`, `fecha_despacho`, `fecha_llegada`, `fecha_almacen`, `fecha_factura_inicial`, `fecha_factura_final`, `id_estatus`, `id_usuario`) VALUES
 (1, 2, 1, 7, 2017, 1, 1, 'PHX1214T093-2July', '4854.96', 1152, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-24', '0000-00-00', 1, 231),
-(2, 1, 2, 8, 2018, 2, 2, 'PHX1214T059-2JULY', '5132.16', 972, '5464.80', 1035, NULL, NULL, NULL, NULL, '2017-08-25', '0000-00-00', 3, 231);
+(2, 1, 2, 8, 2018, 2, 2, 'PHX1214T059-2JULY', '5132.16', 972, '5464.80', 1035, NULL, NULL, NULL, NULL, '2017-08-25', '0000-00-00', 3, 231),
+(11, 1, 2, 8, 2017, 3, 1, 'yyyyy555ll', '5000.00', 100, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231),
+(12, 1, 1, 8, 2017, 2, 1, 'zzzz5552z', '5000.00', 500, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231),
+(13, 2, 1, 7, 2017, 1, 1, 'PHX1214T056-2JUL', '24936.12', 4410, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231);
 
 -- --------------------------------------------------------
 
@@ -524,7 +527,7 @@ ALTER TABLE `estatus_factura`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
