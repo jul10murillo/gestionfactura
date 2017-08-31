@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -13,10 +13,12 @@ use Yii;
  * @property string $fecha_estimada_pago
  * @property integer $porcentaje
  * @property integer $dias_credito
+ * @property string $fecha_pago
+ * @property integer $id_estatus_pago
  *
  * @property Factura $idFactura
+ * @property EstatusPago $idEstatusPago
  * @property Pago[] $pagos
- * @author Julio Murillo <jmurillo@grudu.org>
  */
 class CondicionPago extends \yii\db\ActiveRecord
 {
@@ -34,11 +36,12 @@ class CondicionPago extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_factura', 'monto_estimado_pago', 'fecha_estimada_pago', 'porcentaje', 'dias_credito'], 'required'],
-            [['id_factura', 'porcentaje', 'dias_credito'], 'integer'],
+            [['id_factura', 'monto_estimado_pago', 'fecha_estimada_pago', 'porcentaje', 'dias_credito', 'fecha_pago', 'id_estatus_pago'], 'required'],
+            [['id_factura', 'porcentaje', 'dias_credito', 'id_estatus_pago'], 'integer'],
             [['monto_estimado_pago'], 'number'],
-            [['fecha_estimada_pago'], 'safe'],
+            [['fecha_estimada_pago', 'fecha_pago'], 'safe'],
             [['id_factura'], 'exist', 'skipOnError' => true, 'targetClass' => Factura::className(), 'targetAttribute' => ['id_factura' => 'id_factura']],
+            [['id_estatus_pago'], 'exist', 'skipOnError' => true, 'targetClass' => EstatusPago::className(), 'targetAttribute' => ['id_estatus_pago' => 'id_estatus_pago']],
         ];
     }
 
@@ -50,10 +53,12 @@ class CondicionPago extends \yii\db\ActiveRecord
         return [
             'id_cuota' => 'Id Cuota',
             'id_factura' => 'Id Factura',
-            'monto_estimado_pago' => 'Monto a Pagar',
+            'monto_estimado_pago' => 'Monto Estimado Pago',
             'fecha_estimada_pago' => 'Fecha Estimada Pago',
             'porcentaje' => 'Porcentaje',
-            'dias_credito' => 'Días de Crédito',
+            'dias_credito' => 'Dias Credito',
+            'fecha_pago' => 'Fecha Pago',
+            'id_estatus_pago' => 'Id Estatus Pago',
         ];
     }
 
@@ -63,6 +68,14 @@ class CondicionPago extends \yii\db\ActiveRecord
     public function getIdFactura()
     {
         return $this->hasOne(Factura::className(), ['id_factura' => 'id_factura']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdEstatusPago()
+    {
+        return $this->hasOne(EstatusPago::className(), ['id_estatus_pago' => 'id_estatus_pago']);
     }
 
     /**

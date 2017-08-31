@@ -21,7 +21,8 @@
         "dmstr/yii2-adminlte-asset": "2.*",
         "edvlerblog/yii2-adldap-module": "^3.0.0",
         "johnitvn/yii2-rbac-plus": "*",
-        "yiister/yii2-gentelella": "~1.0"
+        "yiister/yii2-gentelella": "~1.0",
+        "kartik-v/yii2-widgets": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

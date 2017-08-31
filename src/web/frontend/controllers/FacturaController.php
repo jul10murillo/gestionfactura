@@ -5,6 +5,8 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Factura;
 use common\models\FacturaSearch;
+use common\models\CondicionPago;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -51,9 +53,16 @@ class FacturaController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {
+    {        
+          $dataProvider = new ActiveDataProvider([
+            'query' => CondicionPago::find()-> where(['id_factura' => $id]),
+          ]);
+          
+          $dataProvider->sort->sortParam = false;
+          
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider'=>$dataProvider,
         ]);
     }
 

@@ -42,33 +42,6 @@ and open the template in the editor.
   src: url('font/Montserrat-UltraLight 2.otf'); /* IE9 Compat Modes */
 }
 
-body {
-  /* Location of the image */
-   /*background-image: url('../img/img-dumit/white/BG.jpg');*/
-  /*background-image: url('../img/img-dumit/white/fondo.jpg');*/
-  
-  /* Image is centered vertically and horizontally at all times */
-  
-  /*background-position: center center;*/
-  
-  /* Image doesn't repeat */
-  /*background-repeat: no-repeat;*/
-  
-  /* Makes the image fixed in the viewport so that it doesn't move when 
-     the content height is greater than the image height */
-  /*background-attachment: fixed;*/
-  
-  /* This is what makes the background image rescale based on its container's size */
-  /*background-size: cover;*/
-  
-  /* Pick a solid background color that will be displayed while the background image is loading */
-  /*background-color:#fcfcfc;*/
-  
-  /* SHORTHAND CSS NOTATION
-   * background: url(background-photo.jpg) center center cover no-repeat fixed;
-   */
-}
-
 /* LOGIN */
 
 .login-page{
@@ -118,17 +91,15 @@ body {
     text-align: left!important;
 }
 
-
 .btn-primary{
     color: #fff!important;
-    font-family: 'Montserrat-SemiBold'!important;
+    font-family: 'Montserrat-UltraLight 2'!important;
     font-size: 14px!important;
     background-color: #8db559!important;
-    border-style: none!important;
-    border-radius: 4px!important;
+    border-color: #8db559!important;
+    border-radius: 3px!important;
     margin: 10px!important;
-    width: 100px;
-    padding: 10px 16px;
+    padding: 6px 12px;
 }
 
 .form-group {
@@ -236,10 +207,6 @@ body {
 }
 
 /* SECCIÓN FACTURA*/
-.btnfactura {
-/*    width: 100px;
-    height: 70px;*/
-}
 
 .btn-factura.glyphicon-plus {
     color: #FFF!important;
@@ -253,6 +220,8 @@ body {
     outline: none;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: .3s;
+    float:right;
+    margin-bottom:1%; 
 }
 
 thead,thead a,thead a:hover  {
@@ -288,7 +257,7 @@ a.collapse-toggle:hover,a.collapse-toggle:focus{
 /*SECCIÓN REGISTRO FACTURA*/
 
 .modal-content {
-    padding: 50px;
+    padding: 6%;
 }
 
 .modal-title {
@@ -298,10 +267,6 @@ a.collapse-toggle:hover,a.collapse-toggle:focus{
     padding: 0px;
     border-bottom: 2px solid;
     border-bottom-color: #8db559;
-}
-
-input.form-control{
-    /*width: 50%;*/
 }
 
 .header-registrofac{
@@ -314,4 +279,33 @@ span.glyphicon.glyphicon-list-alt,h1.modal-title{
 
 span.glyphicon.glyphicon-list-alt{
     font-size: 13pt;
+}
+
+div.form-group {
+    display: inline-block;
+    width: 46%;
+    margin-bottom: 2%;
+    margin-right: 3%;
+}
+
+.modal-footer {
+    border-top: 10px;
+}
+
+div.form-group field-factura-fecha_proforma required {
+/*position:relative;
+margin-top:5%;*/
+
+}
+
+
+/*VER FACTURA*/
+
+.panel-default > .panel-heading {
+    color: #fff;
+    background-color: #1779ba!important;
+}
+
+.panel-title > a:hover,.panel-title > a:visited,.panel-title > a:focus{
+    color: #dfe2e5!important;
 }

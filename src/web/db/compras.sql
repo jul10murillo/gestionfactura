@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-08-2017 a las 22:28:43
+-- Tiempo de generación: 31-08-2017 a las 23:12:49
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -86,8 +86,18 @@ CREATE TABLE `condicion_pago` (
   `monto_estimado_pago` decimal(10,2) NOT NULL,
   `fecha_estimada_pago` date NOT NULL,
   `porcentaje` int(11) NOT NULL,
-  `dias_credito` int(11) NOT NULL
+  `dias_credito` int(11) NOT NULL,
+  `fecha_pago` date NOT NULL,
+  `id_estatus_pago` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `condicion_pago`
+--
+
+INSERT INTO `condicion_pago` (`id_cuota`, `id_factura`, `monto_estimado_pago`, `fecha_estimada_pago`, `porcentaje`, `dias_credito`, `fecha_pago`, `id_estatus_pago`) VALUES
+(1, 1, '1220.37', '2017-07-07', 30, 120, '2017-03-09', 1),
+(2, 1, '2847.54', '2017-08-12', 70, 120, '2017-04-14', 1);
 
 -- --------------------------------------------------------
 
@@ -113,6 +123,27 @@ INSERT INTO `estatus_factura` (`id_estatus`, `cod_estatus`, `descripcion`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estatus_pago`
+--
+
+CREATE TABLE `estatus_pago` (
+  `id_estatus_pago` int(11) NOT NULL,
+  `cod_estatus_pago` varchar(20) NOT NULL,
+  `descripcion_pago` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estatus_pago`
+--
+
+INSERT INTO `estatus_pago` (`id_estatus_pago`, `cod_estatus_pago`, `descripcion_pago`) VALUES
+(1, 'P', 'Pendiente'),
+(2, 'PC', 'Parcialmente Cancelada'),
+(3, 'C', 'Cancelada');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `factura`
 --
 
@@ -129,6 +160,7 @@ CREATE TABLE `factura` (
   `unidades_factura_inicial` int(11) NOT NULL,
   `monto_factura_final` decimal(10,2) DEFAULT NULL,
   `unidades_factura_final` int(11) DEFAULT NULL,
+  `fecha_proforma` date NOT NULL,
   `fecha_produccion` date DEFAULT NULL,
   `fecha_despacho` date DEFAULT NULL,
   `fecha_llegada` date DEFAULT NULL,
@@ -143,12 +175,14 @@ CREATE TABLE `factura` (
 -- Volcado de datos para la tabla `factura`
 --
 
-INSERT INTO `factura` (`id_factura`, `id_marca`, `id_temporada`, `id_mes`, `ano`, `id_proveedor`, `id_tipo_producto`, `nro_factura`, `monto_factura_inicial`, `unidades_factura_inicial`, `monto_factura_final`, `unidades_factura_final`, `fecha_produccion`, `fecha_despacho`, `fecha_llegada`, `fecha_almacen`, `fecha_factura_inicial`, `fecha_factura_final`, `id_estatus`, `id_usuario`) VALUES
-(1, 2, 1, 7, 2017, 1, 1, 'PHX1214T093-2July', '4854.96', 1152, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-24', '0000-00-00', 1, 231),
-(2, 1, 2, 8, 2018, 2, 2, 'PHX1214T059-2JULY', '5132.16', 972, '5464.80', 1035, NULL, NULL, NULL, NULL, '2017-08-25', '0000-00-00', 3, 231),
-(11, 1, 2, 8, 2017, 3, 1, 'yyyyy555ll', '5000.00', 100, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231),
-(12, 1, 1, 8, 2017, 2, 1, 'zzzz5552z', '5000.00', 500, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231),
-(13, 2, 1, 7, 2017, 1, 1, 'PHX1214T056-2JUL', '24936.12', 4410, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231);
+INSERT INTO `factura` (`id_factura`, `id_marca`, `id_temporada`, `id_mes`, `ano`, `id_proveedor`, `id_tipo_producto`, `nro_factura`, `monto_factura_inicial`, `unidades_factura_inicial`, `monto_factura_final`, `unidades_factura_final`, `fecha_proforma`, `fecha_produccion`, `fecha_despacho`, `fecha_llegada`, `fecha_almacen`, `fecha_factura_inicial`, `fecha_factura_final`, `id_estatus`, `id_usuario`) VALUES
+(1, 2, 1, 7, 2017, 1, 1, 'PHX1214T093-2July', '4854.96', 1152, NULL, NULL, '2017-08-20', NULL, NULL, NULL, NULL, '2017-08-24', '0000-00-00', 1, 231),
+(2, 1, 2, 8, 2018, 2, 2, 'PHX1214T059-2JULY', '5132.16', 972, '5464.80', 1035, '2017-08-21', NULL, NULL, NULL, NULL, '2017-08-25', '0000-00-00', 3, 231),
+(11, 1, 2, 8, 2017, 3, 1, 'yyyyy555ll', '5000.00', 100, NULL, NULL, '2017-08-22', NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231),
+(12, 1, 1, 8, 2017, 2, 1, 'zzzz5552z', '5000.00', 500, NULL, NULL, '2017-08-23', NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231),
+(13, 2, 1, 7, 2017, 1, 1, 'PHX1214T056-2JUL', '24936.12', 4410, NULL, NULL, '2017-08-25', NULL, NULL, NULL, NULL, '2017-08-29', '0000-00-00', 1, 231),
+(14, 2, 1, 7, 2017, 4, 1, 'PHX1116O09-2 E', '13698.20', 2556, NULL, NULL, '2017-08-24', NULL, NULL, NULL, NULL, '2017-08-30', '0000-00-00', 1, 231),
+(15, 2, 1, 7, 2017, 3, 1, 'PHX1116O15-2 E', '1046232.00', 1764, NULL, NULL, '2017-08-23', NULL, NULL, NULL, NULL, '2017-08-30', '0000-00-00', 1, 231);
 
 -- --------------------------------------------------------
 
@@ -428,13 +462,20 @@ ALTER TABLE `auth_rule`
 --
 ALTER TABLE `condicion_pago`
   ADD PRIMARY KEY (`id_cuota`),
-  ADD KEY `id_factura` (`id_factura`);
+  ADD KEY `id_factura` (`id_factura`),
+  ADD KEY `id_estatus_pago` (`id_estatus_pago`);
 
 --
 -- Indices de la tabla `estatus_factura`
 --
 ALTER TABLE `estatus_factura`
   ADD PRIMARY KEY (`id_estatus`);
+
+--
+-- Indices de la tabla `estatus_pago`
+--
+ALTER TABLE `estatus_pago`
+  ADD PRIMARY KEY (`id_estatus_pago`);
 
 --
 -- Indices de la tabla `factura`
@@ -517,17 +558,22 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `condicion_pago`
 --
 ALTER TABLE `condicion_pago`
-  MODIFY `id_cuota` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cuota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `estatus_factura`
 --
 ALTER TABLE `estatus_factura`
   MODIFY `id_estatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT de la tabla `estatus_pago`
+--
+ALTER TABLE `estatus_pago`
+  MODIFY `id_estatus_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
@@ -590,7 +636,8 @@ ALTER TABLE `auth_item_child`
 -- Filtros para la tabla `condicion_pago`
 --
 ALTER TABLE `condicion_pago`
-  ADD CONSTRAINT `condicion_pago_ibfk_1` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`id_factura`);
+  ADD CONSTRAINT `condicion_pago_ibfk_1` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`id_factura`),
+  ADD CONSTRAINT `condicion_pago_ibfk_2` FOREIGN KEY (`id_estatus_pago`) REFERENCES `estatus_pago` (`id_estatus_pago`);
 
 --
 -- Filtros para la tabla `factura`

@@ -19,6 +19,7 @@ use Yii;
  * @property integer $unidades_factura_inicial
  * @property string $monto_factura_final
  * @property integer $unidades_factura_final
+ * @property string $fecha_proforma
  * @property string $fecha_produccion
  * @property string $fecha_despacho
  * @property string $fecha_llegada
@@ -53,11 +54,10 @@ class Factura extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-//            [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'nro_factura', 'monto_factura_inicial', 'unidades_factura_inicial', 'fecha_factura_inicial', 'fecha_factura_final', 'id_estatus', 'id_usuario'], 'required'],
-            [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'nro_factura', 'monto_factura_inicial', 'unidades_factura_inicial', 'fecha_factura_inicial', 'id_estatus', 'id_usuario'], 'required'],
+            [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'nro_factura', 'monto_factura_inicial', 'unidades_factura_inicial', 'fecha_proforma', 'fecha_factura_inicial', 'id_estatus', 'id_usuario'], 'required'],
             [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'unidades_factura_inicial', 'unidades_factura_final', 'id_estatus', 'id_usuario'], 'integer'],
-            [['monto_factura_inicial', 'monto_factura_final'], 'number'],
-            [['fecha_produccion', 'fecha_despacho', 'fecha_llegada', 'fecha_almacen', 'fecha_factura_inicial', 'fecha_factura_final'], 'safe'],
+            [['monto_factura_inicial', 'monto_factura_final'], 'string'],
+            [['fecha_proforma', 'fecha_produccion', 'fecha_despacho', 'fecha_llegada', 'fecha_almacen', 'fecha_factura_inicial', 'fecha_factura_final'], 'safe'],
             [['nro_factura'], 'string', 'max' => 200],
             [['id_marca'], 'exist', 'skipOnError' => true, 'targetClass' => Marca::className(), 'targetAttribute' => ['id_marca' => 'id_marca']],
             [['id_temporada'], 'exist', 'skipOnError' => true, 'targetClass' => Temporada::className(), 'targetAttribute' => ['id_temporada' => 'id_temporada']],
@@ -77,23 +77,30 @@ class Factura extends \yii\db\ActiveRecord
         return [
             'id_factura' => 'Id Factura',
             'id_marca' => 'Marca',
+            'idMarca.descripcion' => 'Marca',
             'id_temporada' => 'Temporada',
+            'idTemporada.descripcion'=> 'Temporada',
             'id_mes' => 'Mes',
+            'idMes.descripcion' => 'Mes',
             'ano' => 'Año',
             'id_proveedor' => 'Proveedor',
-            'id_tipo_producto' => 'Tipo Producto',
+            'idProveedor.nombre'=> 'Proveedor',
+            'id_tipo_producto' => 'Tipo de producto',
+            'idTipoProducto.descripcion'=> 'Tipo de producto',
             'nro_factura' => 'Factura',
             'monto_factura_inicial' => 'Monto Inicial',
             'unidades_factura_inicial' => 'Unidades Inicial',
             'monto_factura_final' => 'Monto Final',
             'unidades_factura_final' => 'Unidades Final',
-            'fecha_produccion' => 'Fecha Produccion',
-            'fecha_despacho' => 'Fecha Despacho',
-            'fecha_llegada' => 'Fecha Llegada',
-            'fecha_almacen' => 'Fecha Almacen',
+            'fecha_proforma' => 'Fecha Aprobación Proforma',
+            'fecha_produccion' => 'Fecha Producción',
+            'fecha_despacho' => 'Fecha Despacho (ETD)',
+            'fecha_llegada' => 'Fecha Llegada (ETA)',
+            'fecha_almacen' => 'Fecha Almacén',
             'fecha_factura_inicial' => 'Fecha Factura Inicial',
             'fecha_factura_final' => 'Fecha Factura Final',
             'id_estatus' => 'Id Estatus',
+            'idEstatus.descripcion' => 'Estatus',
             'id_usuario' => 'Id Usuario',
         ];
     }
