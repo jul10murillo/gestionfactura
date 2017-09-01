@@ -221,7 +221,8 @@ and open the template in the editor.
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: .3s;
     float:right;
-    margin-bottom:1%; 
+    margin-bottom:1%;
+    margin-left: 1%;
 }
 
 thead,thead a,thead a:hover  {
@@ -297,7 +298,6 @@ div.form-group field-factura-fecha_proforma required {
 margin-top:5%;*/
 
 }
-
 
 /*VER FACTURA*/
 

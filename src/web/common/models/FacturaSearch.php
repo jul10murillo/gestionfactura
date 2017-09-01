@@ -117,6 +117,7 @@ class FacturaSearch extends Factura
             'ano' => $this->ano,
             'id_proveedor' => $this->id_proveedor,
             'id_tipo_producto' => $this->id_tipo_producto,
+            'nro_factura' => $this->nro_factura,
             'monto_factura_inicial' => $this->monto_factura_inicial,
             'unidades_factura_inicial' => $this->unidades_factura_inicial,
             'monto_factura_final' => $this->monto_factura_final,

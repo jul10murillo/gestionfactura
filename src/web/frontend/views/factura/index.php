@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Collapse;
@@ -28,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
     <p>
         <!--<? = Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>', ['create'], ['class' => 'btn btn-success btn-factura']) ?>-->
+        <?= Html::a(Yii::t('app', '<span class="glyphicon glyphicon-refresh"></span>'), Url::toRoute(['factura/index']), ['title' => 'Limpiar Búsqueda','class' => 'btn btn-success btn-factura']) ?>
         <?=Html::a('<span class="glyphicon glyphicon-plus"></span>',
                     ['/factura/create'], 
                     [
@@ -36,7 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'data-target'=>'#modalvote',
                         'class' => 'btn btn-success btn-factura'
                     ]
-                   );?>
+                   );
+        ?>
     </p>
     
     <div class="modal remote fade" id="modalvote">
@@ -55,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            ['class' => 'yii\grid\CheckboxColumn'],
             [
             'attribute' => 'nro_factura',
-//            'format' => 'text',
+            'format' => 'text',
             'label' => 'Factura',
             ],            
             [

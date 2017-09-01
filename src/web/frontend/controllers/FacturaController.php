@@ -54,11 +54,11 @@ class FacturaController extends Controller
      */
     public function actionView($id)
     {        
-          $dataProvider = new ActiveDataProvider([
+        $dataProvider = new ActiveDataProvider([
             'query' => CondicionPago::find()-> where(['id_factura' => $id]),
           ]);
           
-          $dataProvider->sort->sortParam = false;
+        $dataProvider->sort->sortParam = false;
           
         return $this->render('view', [
             'model' => $this->findModel($id),

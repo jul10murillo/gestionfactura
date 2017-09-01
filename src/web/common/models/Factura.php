@@ -56,7 +56,7 @@ class Factura extends \yii\db\ActiveRecord
         return [
             [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'nro_factura', 'monto_factura_inicial', 'unidades_factura_inicial', 'fecha_proforma', 'fecha_factura_inicial', 'id_estatus', 'id_usuario'], 'required'],
             [['id_marca', 'id_temporada', 'id_mes', 'ano', 'id_proveedor', 'id_tipo_producto', 'unidades_factura_inicial', 'unidades_factura_final', 'id_estatus', 'id_usuario'], 'integer'],
-            [['monto_factura_inicial', 'monto_factura_final'], 'string'],
+            [['monto_factura_inicial', 'monto_factura_final'], 'number'],
             [['fecha_proforma', 'fecha_produccion', 'fecha_despacho', 'fecha_llegada', 'fecha_almacen', 'fecha_factura_inicial', 'fecha_factura_final'], 'safe'],
             [['nro_factura'], 'string', 'max' => 200],
             [['id_marca'], 'exist', 'skipOnError' => true, 'targetClass' => Marca::className(), 'targetAttribute' => ['id_marca' => 'id_marca']],
