@@ -59,7 +59,7 @@ class FacturaSearch extends Factura
             'query' => $query,
             'pagination' => [
             'pageSize' => 20,
-        ],
+            ],
         ]);
         
         $dataProvider->sort->attributes['idMarca.descripcion'] = [

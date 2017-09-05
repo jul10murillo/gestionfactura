@@ -55,4 +55,13 @@ class GDhelper{
         }
         return $date;
     }
+    
+     public static function pageTotal($dataProvider, $fieldName)
+    {
+        $total=0;
+        foreach($dataProvider as $item){
+            $total+=$item[$fieldName];
+        }
+        return $total;
+    }
 }
