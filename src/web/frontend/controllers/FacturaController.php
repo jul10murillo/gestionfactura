@@ -91,6 +91,9 @@ class FacturaController extends Controller
             $model->id_usuario =Yii::$app->user->identity->id;
 
             $model->save();
+            
+            Yii::$app->session->setFlash('success','Factura registrada satisfactoriamente'); 
+            
             return $this->redirect(['index']);
 //            return $this->redirect(['view', 'id' => $model->id_factura]);
 

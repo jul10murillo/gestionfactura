@@ -3,11 +3,14 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 //use yii\grid\GridView;
+use kartik\grid\GridView;
+use kartik\widgets\Alert;
 use yii\widgets\Pjax;
 use yii\bootstrap\Collapse;
 use yii\helpers\ArrayHelper;
+use yii\bootstrap\Modal;
 //use common\components\GDhelper;
-use kartik\grid\GridView;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\PagoSearch */
@@ -43,8 +46,59 @@ $this->params['breadcrumbs'][] = $this->title;
                    );
         ?>
     </p>
+    <?php 
+    // JS: MODAL EDIT & PJAX BELOW.
+        Modal::begin([
+    //        'header' => 'Actualizar Pago',
+            'id'=>'editModalId',
+            'class' =>'modal',
+            'size' => 'modal-md',
+        ]);
+            echo "<div class='modalContent'></div>";
+        Modal::end();
+
+        $this->registerJs(
+        "$(document).on('ready pjax:success', function() {
+                $('.modalButton').click(function(e){
+                   e.preventDefault(); //for prevent default behavior of <a> tag.
+                   var tagname = $(this)[0].tagName;
+                   $('#editModalId').modal('show').find('.modalContent').load($(this).attr('href'));
+               });
+            });
+        ");
+
+        // JS: Update response handling
+        $this->registerJs(
+    'jQuery(document).ready(function($){
+        $(document).ready(function () {
+            $("body").on("beforeSubmit", "form#pago-form-id", function () {
+                var form = $(this);
+                // return false if form still have some validation errors
+                if (form.find(".has-error").length) {
+                    return false;
+                }
+                // submit form
+                $.ajax({
+                    url    : form.attr("action"),
+                    type   : "post",
+                    data   : form.serialize(),
+                    success: function (response) {
+                        $("#editModalId").modal("toggle");
+                        $.pjax.reload({container:"#pago-grid-container-id"}); //for pjax update
+                    },
+                    error  : function () {
+                        console.log("internal server error");
+                    }
+                });
+                return false;
+             });
+            });
+            });'
+        );
+    
+    ?>
     <div class="container-grid">   
-        <?php Pjax::begin(); ?>
+        <?php Pjax::begin(['id' => 'pago-grid-container-id']); ?>
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
@@ -123,9 +177,21 @@ $this->params['breadcrumbs'][] = $this->title;
                      'header'=>'Acción', 
                      'headerOptions' => ['width' => '3%'],
                      'template'=>'{update}',
-                    ],
+                        
+                      'buttons' => 
+                        ['update' => function ($url, $model) {
+                                    // Html::a args: title, href, tag properties.
+                                    return Html::a( '<span class="glyphicon glyphicon-pencil"></span>',
+                                                    ['/pago/update','id' => $model->id_pago],
+                                                    ['class'=>' modalButton', 'title'=>'Editar pago', ]
+                                                  );
+                            },
+                        ]  
+                     
+                   ],
                 ],
             ]); ?>
         <?php Pjax::end(); ?>
     </div>
+    <?php Alert::widget();?>
 </div>

@@ -62,37 +62,16 @@ class FacturaSearch extends Factura
             ],
         ]);
         
-        $dataProvider->sort->attributes['idMarca.descripcion'] = [
-        'asc' => ['idMarca.descripcion' => SORT_ASC],
-        'desc' => ['idMarca.descripcion' => SORT_DESC],
-        ];
-        
-        $dataProvider->sort->attributes['idTemporada.descripcion'] = [
-        'asc' => ['idTemporada.descripcion' => SORT_ASC],
-        'desc' => ['idTemporada.descripcion' => SORT_DESC],
-        ];
-        
-        $dataProvider->sort->attributes['idMes.descripcion'] = [
-        'asc' => ['idMes.descripcion' => SORT_ASC],
-        'desc' => ['idMes.descripcion' => SORT_DESC],
-        ];
-        
-        $dataProvider->sort->attributes['idProveedor.nombre'] = [
-        'asc' => ['idProveedor.nombre' => SORT_ASC],
-        'desc' => ['idProveedor.nombre' => SORT_DESC],
-        ];
-          
-        $dataProvider->sort->attributes['idTipoProducto.descripcion'] = [
-        'asc' => ['idTipoProducto.descripcion' => SORT_ASC],
-        'desc' => ['idTipoProducto.descripcion' => SORT_DESC],
-        ];
-          
-        $dataProvider->sort->attributes['idEstatus.descripcion'] = [
-        'asc' => ['idEstatus.descripcion' => SORT_ASC],
-        'desc' => ['idEstatus.descripcion' => SORT_DESC],
-        ]; 
-        
-        
+        // add extra sort attributes
+        $addSortAttributes = ['idMarca.descripcion','idTemporada.descripcion','idMes.descripcion','idProveedor.nombre','idTipoProducto.descripcion','idEstatus.descripcion'];
+        foreach ($addSortAttributes as $addSortAttribute) {
+            $dataProvider->sort->attributes[$addSortAttribute] = [
+                'asc' => [$addSortAttribute => SORT_ASC],
+                'desc' => [$addSortAttribute => SORT_DESC],
+                'label' => $this->getAttributeLabel($addSortAttribute),
+            ];
+        }
+
         $query->joinWith(['idMarca' => function($query) { $query->from(['idMarca' => 'marca']); }]);
         $query->joinWith(['idTemporada' => function($query) { $query->from(['idTemporada' => 'temporada']); }]);
         $query->joinWith(['idMes' => function($query) { $query->from(['idMes' => 'mes']); }]);

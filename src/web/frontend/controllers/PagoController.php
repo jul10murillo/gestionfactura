@@ -85,11 +85,62 @@ class PagoController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pago]);
+        $model3 = \common\models\CondicionPago::findOne($id);
+        
+//        $factura=  $model3->id_factura;
+
+        $model2 = \common\models\Factura::findOne(['id_factura'=> $model3->id_factura]);
+
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $model->save();
+            
+            $acumulado=0;
+
+            $pagos = \common\models\Pago::find()->where(['id_cuota'=>$model->id_cuota])->all();
+            
+            foreach ($pagos as $rowp) {
+                $acumulado= $acumulado + $rowp->monto_pago;
+            }
+           
+            if ($model3->monto_estimado_pago == $acumulado) {
+               $model3->id_estatus_pago= 3; 
+            }else{
+               $model3->id_estatus_pago= 2; 
+               
+            }
+            
+            $model3->save();
+            
+            $cuotas = \common\models\CondicionPago::find()->where(['id_factura'=>$model3->id_factura])->all();
+            
+            $pendientes=0;
+
+            foreach ($cuotas as $rowc) {
+                if ($rowc->id_estatus_pago == 2 or $rowc->id_estatus_pago == 1 ) {
+                    $pendientes= $pendientes + 1;
+                }
+            }
+            
+            if ($pendientes >= 1 ) {
+                $model2->id_estatus= 2; 
+            }else {
+                $model2->id_estatus= 3; 
+               
+            }
+
+            $model2->save();
+            
+            Yii::$app->session->setFlash('success','Pago modificado satisfactoriamente'); 
+            
+            return $this->redirect(['index']);
+//            return $this->redirect(['view', 'id' => $model->id_pago]);
         } else {
-            return $this->render('update', [
+            return $this->renderAjax('update', [
                 'model' => $model,
+                'model2' => $model2,
+                'model3' => $model3,
             ]);
         }
     }

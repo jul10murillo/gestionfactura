@@ -282,21 +282,16 @@ span.glyphicon.glyphicon-list-alt{
     font-size: 13pt;
 }
 
-div.form-group {
-    display: inline-block;
-    width: 46%;
-    margin-bottom: 2%;
-    margin-right: 3%;
-}
 
 .modal-footer {
     border-top: 10px;
 }
 
-div.form-group field-factura-fecha_proforma required {
-/*position:relative;
-margin-top:5%;*/
-
+div.form-group {
+    display: inline-block;
+    width: 46%;
+    margin-bottom: 2%;
+    margin-right: 3%;
 }
 
 /*VER FACTURA*/
@@ -308,4 +303,13 @@ margin-top:5%;*/
 
 .panel-title > a:hover,.panel-title > a:visited,.panel-title > a:focus{
     color: #dfe2e5!important;
+}
+
+/*EDITAR PAGO*/
+div.pago-form{
+    
+
+}
+div.modal-header {
+    border-bottom: 0px solid #fff;
 }

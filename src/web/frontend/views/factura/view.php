@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="panel-body">   
             <?= DetailView::widget([
             'model' => $model,
-            'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-','dateFormat' => 'd-MM-Y'],
+            'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '-','dateFormat' => 'dd-MM-Y'],
             'attributes' => [
                 'fecha_proforma:date',
                 'fecha_produccion:date',
